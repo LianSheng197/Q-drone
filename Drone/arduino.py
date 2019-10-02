@@ -1,4 +1,5 @@
 import serial
+
 class Arduino():
     def __init__(self):
         self.ser=serial.Serial(
@@ -17,4 +18,12 @@ class Arduino():
         self.ser.flushOutput()
         
         self.ser.write((str(str_sum)+"A").encode(encoding='utf-8', errors=''))
-        #self.ser.write(bytes(b'str(str_sum)+"A"'))
+
+    def isOpen():
+        interface = serial.Serial(
+        	port="/dev/ttyACM0", 
+        	baudrate=115200,
+        	timeout=0.1,
+        )
+        read=str(interface.readline().decode(encoding='utf-8', errors=''))
+        return read
